@@ -1,0 +1,405 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Supplier | Galih's Chocolate Shop</title>
+
+    <style>
+        /* Pengaturan dasar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Comic Sans MS", cursive;
+            background-color: #fffaf6;
+            color: #4e4034;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 45px 20px;
+            background: linear-gradient(135deg, #f4e7d9, #fffaf6);
+            border-bottom: 1px solid #e7d5c3;
+        }
+
+        .subtitle {
+            font-family: Arial, sans-serif;
+            font-size: 11px;
+            letter-spacing: 4px;
+            color: #8b6b50;
+            margin-bottom: 12px;
+        }
+
+        .header h1 {
+            font-family: "Segoe Script", cursive;
+            font-size: clamp(26px, 5vw, 42px);
+            color: #4e4034;
+            margin-bottom: 12px;
+        }
+
+        .header p.description {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #7d5a44;
+        }
+
+        /* Konten utama */
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 40px 25px 55px;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-heading h2 {
+            font-family: "Segoe Script", cursive;
+            font-size: 28px;
+            color: #4e4034;
+            margin-bottom: 10px;
+        }
+
+        .section-heading p {
+            font-size: 13px;
+            color: #8b735f;
+        }
+
+        /* Pembungkus tabel */
+        .table-wrapper {
+            overflow-x: auto;
+            background-color: white;
+            border: 1px solid #e9ded4;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(78, 64, 52, 0.10);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        thead {
+            background-color: #4e4034;
+            color: #fffaf6;
+        }
+
+        th {
+            padding: 20px 15px;
+            font-family: "Comic Sans MS", cursive;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 20px 15px;
+            font-size: 13px;
+            border-bottom: 1px solid #eee4db;
+        }
+
+        tbody tr {
+            background-color: #ffffff;
+            transition: background-color 0.25s ease;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #fdf7f1;
+        }
+
+        tbody tr:hover {
+            background-color: #f4e7d9;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Nomor supplier */
+        .number {
+            display: inline-flex;
+            width: 32px;
+            height: 32px;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            background-color: #eee0d2;
+            color: #4e4034;
+            font-weight: bold;
+        }
+
+        /* Nama perusahaan */
+        .company-name {
+            font-weight: bold;
+            color: #4e4034;
+            white-space: nowrap;
+        }
+
+        /* Label produk */
+        .product-tag {
+            display: inline-block;
+            padding: 8px 12px;
+            background-color: #f4e7d9;
+            color: #7d5a44;
+            border-radius: 20px;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+
+        /* Foto supplier */
+        .supplier-image {
+            width: 180px;
+            height: 125px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 3px solid #f4e7d9;
+            display: block;
+            margin: auto;
+            transition: transform 0.3s ease,
+                        box-shadow 0.3s ease;
+        }
+
+        .supplier-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(78, 64, 52, 0.18);
+        }
+
+        .image-link {
+            display: inline-block;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 25px 15px;
+            background-color: #f4e7d9;
+            border-top: 1px solid #e7d5c3;
+            color: #7d5a44;
+            font-size: 12px;
+            line-height: 2;
+        }
+
+        /* Tampilan tablet dan HP */
+        @media (max-width: 700px) {
+            .header {
+                padding: 35px 15px;
+            }
+
+            .subtitle {
+                letter-spacing: 2px;
+            }
+
+            .container {
+                padding: 30px 12px 40px;
+            }
+
+            .section-heading h2 {
+                font-size: 24px;
+            }
+
+            th, td {
+                padding: 14px 12px;
+            }
+
+            .supplier-image {
+                width: 145px;
+                height: 105px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header Toko -->
+    <header class="header">
+        <p class="subtitle">OUR PARTNERS & INGREDIENTS</p>
+
+        <h1>Supplier Galih's Chocolate Shop</h1>
+
+        <p class="description">
+            Mengenal para supplier di balik manisnya setiap produk kami ♡
+        </p>
+    </header>
+
+    <!-- Daftar Supplier -->
+    <main class="container">
+
+        <div class="section-heading">
+            <h2>Our Trusted Suppliers</h2>
+            <p>Bahan berkualitas untuk cokelat yang istimewa.</p>
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Nama Perusahaan</th>
+                        <th>Produk Utama</th>
+                        <th>Foto</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <!-- Supplier 1 -->
+                    <tr>
+                        <td><span class="number">1</span></td>
+
+                        <td class="company-name">
+                            PT COCOAHLIL
+                        </td>
+
+                        <td>
+                            <span class="product-tag">
+                                Pemasok Dark Chocolate
+                            </span>
+                        </td>
+
+                        <td>
+                            <a class="image-link"
+                               href="https://id.wikipedia.org/wiki/Bahlil_Lahadalia"
+                               title="Informasi Lebih Lanjut"
+                               rel="noopener noreferrer">
+                                <img class="supplier-image"
+                                     src="image/bahlil.jpg"
+                                     alt="Foto supplier PT COCOAHLIL">
+                            </a>
+                        </td>
+                    </tr>
+
+                    <!-- Supplier 2 -->
+                    <tr>
+                        <td><span class="number">2</span></td>
+
+                        <td class="company-name">
+                            PT RODRIGO
+                        </td>
+
+                        <td>
+                            <span class="product-tag">
+                                Pemasok Marshmellow
+                            </span>
+                        </td>
+
+                        <td>
+                            <a class="image-link"
+                               href="https://id.wikipedia.org/wiki/Olivia_Rodrigo"
+                               title="Informasi Lebih Lanjut"
+                               rel="noopener noreferrer">
+                                <img class="supplier-image"
+                                     src="image/olivia.jpg"
+                                     alt="Foto supplier PT RODRIGO">
+                            </a>
+                        </td>
+                    </tr>
+
+                    <!-- Supplier 3 -->
+                    <tr>
+                        <td><span class="number">3</span></td>
+
+                        <td class="company-name">
+                            PT STRAWDELLA
+                        </td>
+
+                        <td>
+                            <span class="product-tag">
+                                Pemasok Strawberry
+                            </span>
+                        </td>
+
+                        <td>
+                            <a class="image-link"
+                               href="https://id.wikipedia.org/wiki/Ad%C3%A9la_Jergov%C3%A1"
+                               title="Informasi Lebih Lanjut"
+                               rel="noopener noreferrer">
+                                <img class="supplier-image"
+                                     src="image/adela.jpg"
+                                     alt="Foto supplier PT STRAWDELLA">
+                            </a>
+                        </td>
+                    </tr>
+
+                    <!-- Supplier 4 -->
+                    <tr>
+                        <td><span class="number">4</span></td>
+
+                        <td class="company-name">
+                            PT PISTABOWO
+                        </td>
+
+                        <td>
+                            <span class="product-tag">
+                                Pemasok Pistachio
+                            </span>
+                        </td>
+
+                        <td>
+                            <a class="image-link"
+                               href="https://id.wikipedia.org/wiki/Prabowo_Subianto"
+                               title="Informasi Lebih Lanjut"
+                               rel="noopener noreferrer">
+                                <img class="supplier-image"
+                                     src="image/prabowo.jpg"
+                                     alt="Foto supplier PT PISTABOWO">
+                            </a>
+                        </td>
+                    </tr>
+
+                    <!-- Supplier 5 -->
+                    <tr>
+                        <td><span class="number">5</span></td>
+
+                        <td class="company-name">
+                            PT KUNAFA OLSEN
+                        </td>
+
+                        <td>
+                            <span class="product-tag">
+                                Pemasok Kunafa
+                            </span>
+                        </td>
+
+                        <td>
+                            <a class="image-link"
+                               href="https://id.wikipedia.org/wiki/Elizabeth_Olsen"
+                               title="Informasi Lebih Lanjut"
+                               rel="noopener noreferrer">
+                                <img class="supplier-image"
+                                     src="image/olsen.jpg"
+                                     alt="Foto supplier PT KUNAFA OLSEN">
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>♡ Galih's Chocolate Shop ♡</p>
+        <p>Sweet ingredients, sweeter moments.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,418 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kontak | Galih's Chocolate Shop</title>
+
+    <style>
+        /* Pengaturan dasar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Comic Sans MS", cursive;
+            background-color: #fffaf6;
+            color: #4e4034;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 45px 20px 35px;
+            background: linear-gradient(135deg, #f4e7d9, #fffaf6);
+            border-bottom: 1px solid #e7d5c3;
+        }
+
+        .header .subtitle {
+            font-family: Arial, sans-serif;
+            font-size: 11px;
+            letter-spacing: 4px;
+            color: #8b6b50;
+            margin-bottom: 12px;
+        }
+
+        .header h1 {
+            font-family: "Segoe Script", cursive;
+            font-size: clamp(34px, 5vw, 48px);
+            color: #4e4034;
+            margin-bottom: 12px;
+        }
+
+        .header .tagline {
+            font-size: 14px;
+            color: #7d5a44;
+            line-height: 1.8;
+        }
+
+        /* Konten utama */
+        .container {
+            width: 100%;
+            max-width: 950px;
+            margin: auto;
+            padding: 40px 20px 55px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: "Segoe Script", cursive;
+            font-size: 27px;
+            color: #4e4034;
+            margin-bottom: 12px;
+        }
+
+        .section-description {
+            text-align: center;
+            color: #8b735f;
+            font-size: 13px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        /* Kartu kontak */
+        .contact-list {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .contact-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 25px 15px;
+            background-color: #ffffff;
+            border: 1px solid #e9ded4;
+            border-radius: 18px;
+            box-shadow: 0 5px 18px rgba(78, 64, 52, 0.08);
+            transition: transform 0.3s ease,
+                        box-shadow 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 25px rgba(78, 64, 52, 0.15);
+        }
+
+        .contact-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 55px;
+            height: 55px;
+            margin-bottom: 15px;
+            border-radius: 50%;
+            background-color: #f4e7d9;
+            font-size: 25px;
+        }
+
+        .contact-card h2 {
+            font-size: 18px;
+            color: #4e4034;
+            margin-bottom: 12px;
+        }
+
+        .contact-card p {
+            font-size: 12px;
+            line-height: 1.8;
+            color: #7d5a44;
+            margin-bottom: 15px;
+        }
+
+        .contact-card a {
+            display: inline-block;
+            max-width: 100%;
+            overflow-wrap: anywhere;
+            text-decoration: none;
+            color: #8b4b2d;
+            font-weight: bold;
+            font-size: 13px;
+            transition: color 0.25s ease;
+        }
+
+        .contact-card a:hover {
+            color: #4e4034;
+            text-decoration: underline;
+        }
+
+        .contact-button {
+            margin-top: auto;
+            padding: 9px 15px;
+            border: 1px solid #4e4034;
+            border-radius: 9px;
+            background-color: #4e4034;
+            color: #ffffff !important;
+            font-size: 12px !important;
+            transition: 0.25s ease;
+        }
+
+        .contact-button:hover {
+            background-color: #fffaf6;
+            color: #4e4034 !important;
+            text-decoration: none !important;
+        }
+
+        /* Bagian video */
+        .video-section {
+            margin-top: 50px;
+            padding: 30px;
+            background-color: #ffffff;
+            border: 1px solid #e9ded4;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(78, 64, 52, 0.09);
+        }
+
+        .video-section h2 {
+            text-align: center;
+            font-family: "Segoe Script", cursive;
+            font-size: 26px;
+            color: #4e4034;
+            margin-bottom: 10px;
+        }
+
+        .video-description {
+            text-align: center;
+            font-size: 13px;
+            line-height: 1.8;
+            color: #7d5a44;
+            margin-bottom: 22px;
+        }
+
+        .video-credit {
+            text-align: center;
+            margin-bottom: 22px;
+        }
+
+        .video-credit a {
+            display: inline-block;
+            padding: 11px 20px;
+            border: 1px solid #4e4034;
+            border-radius: 10px;
+            background-color: #4e4034;
+            color: white;
+            font-size: 13px;
+            text-decoration: none;
+            transition: 0.25s ease;
+        }
+
+        .video-credit a:hover {
+            background-color: #fffaf6;
+            color: #4e4034;
+        }
+
+        .video-wrapper {
+            width: 100%;
+            max-width: 640px;
+            margin: auto;
+            overflow: hidden;
+            border: 4px solid #f4e7d9;
+            border-radius: 15px;
+            background-color: #000000;
+            box-shadow: 0 6px 18px rgba(78, 64, 52, 0.12);
+        }
+
+        .video-wrapper video {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 25px 15px;
+            text-align: center;
+            background-color: #f4e7d9;
+            border-top: 1px solid #e7d5c3;
+            color: #7d5a44;
+            font-size: 12px;
+            line-height: 2;
+        }
+
+        /* Tablet */
+        @media (max-width: 750px) {
+            .contact-list {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-card {
+                padding: 22px 18px;
+            }
+
+            .video-section {
+                padding: 22px 15px;
+            }
+        }
+
+        /* HP */
+        @media (max-width: 480px) {
+            .header {
+                padding: 35px 15px;
+            }
+
+            .header .subtitle {
+                letter-spacing: 2px;
+                font-size: 10px;
+            }
+
+            .header .tagline {
+                font-size: 13px;
+            }
+
+            .container {
+                padding: 30px 15px 40px;
+            }
+
+            .section-title,
+            .video-section h2 {
+                font-size: 23px;
+            }
+
+            .video-wrapper {
+                border-width: 3px;
+                border-radius: 10px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <p class="subtitle">GALIH'S CHOCOLATE SHOP</p>
+
+        <h1>Kontak Kami</h1>
+
+        <p class="tagline">
+            Let's stay connected and share some sweetness ♡
+        </p>
+    </header>
+
+    <!-- Informasi Kontak -->
+    <main class="container">
+
+        <h2 class="section-title">Get In Touch ♡</h2>
+
+        <p class="section-description">
+            Punya pertanyaan atau ingin menghubungi kami?
+            Pilih salah satu kontak di bawah ini!
+        </p>
+
+        <div class="contact-list">
+
+            <!-- WhatsApp -->
+            <section class="contact-card">
+                <div class="contact-icon">☏</div>
+
+                <h2>WhatsApp</h2>
+
+                <p>
+                    Hubungi kami secara langsung melalui WhatsApp.
+                </p>
+
+                               <br>
+
+                <a class="contact-button"
+                   href="https://wa.me/085624809518"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    Chat Sekarang ↗
+                </a>
+            </section>
+
+            <!-- Instagram -->
+            <section class="contact-card">
+                <div class="contact-icon">♡</div>
+
+                <h2>Instagram</h2>
+
+                <p>
+                    Kunjungi Instagram kami untuk informasi
+                    dan hal menarik lainnya.
+                </p>
+
+                             <br>
+
+                <a class="contact-button"
+                   href="https://www.instagram.com/luciandwave?igsi=MXNsbmhqMDBzZ3Y1&utm_source=qr"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    Buka Instagram ↗
+                </a>
+            </section>
+
+            <!-- Gmail -->
+            <section class="contact-card">
+                <div class="contact-icon">✉</div>
+
+                <h2>Gmail</h2>
+
+                <p>
+                    Kirim pertanyaan atau pesan melalui email.
+                </p>
+
+                <a href="mailto:galihdesfriansyah@gmail.com">
+                    
+                </a>
+
+                <br>
+
+                <a class="contact-button"
+                   href="mailto:galihdesfriansyah@gmail.com">
+                    Kirim Email ↗
+                </a>
+            </section>
+
+        </div>
+
+        <!-- Video -->
+        <section class="video-section">
+
+            <h2>A Little Something For You ♡</h2>
+
+            <p class="video-description">
+                Terima kasih sudah mengunjungi Galih's Chocolate Shop.
+                Jangan lupa menikmati video di bawah ini!
+            </p>
+
+            <div class="video-credit">
+                <a href="https://vt.tiktok.com/ZSb9wq5rn/"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    Kredit untuk Video ↗
+                </a>
+            </div>
+
+            <div class="video-wrapper">
+                <video controls preload="metadata">
+                    <source src="image/kuki.mp4" type="video/mp4">
+                    Browser kamu tidak mendukung pemutaran video.
+                </video>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>♡ Made with love by Galih's Chocolate Shop ♡</p>
+        <p>Thank you for being part of our sweet journey!</p>
+    </footer>
+
+</body>
+</html>

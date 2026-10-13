@@ -1,0 +1,414 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TOKO JUALAN GALIH</title>
+
+    <style>
+        /* Pengaturan dasar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fffaf7;
+            font-family: "Comic Sans MS", cursive;
+            color: #7d5a44;
+        }
+
+        /* Header toko */
+        .header {
+            text-align: center;
+            padding: 45px 20px;
+            background: linear-gradient(135deg, #fff1ed, #fffaf7);
+            border-bottom: 1px solid #f1ddd5;
+        }
+
+        .subtitle {
+            font-size: 12px;
+            letter-spacing: 4px;
+            color: #9d151d;
+            margin-bottom: 12px;
+        }
+
+        .header h1 {
+            font-family: "Segoe Script", cursive;
+            font-size: clamp(30px, 5vw, 46px);
+            color: #9d151d;
+            margin-bottom: 12px;
+        }
+
+        .tagline {
+            font-size: 15px;
+            color: #7d5a44;
+        }
+
+        /* Daftar produk */
+        .container {
+            max-width: 1250px;
+            margin: auto;
+            padding: 45px 25px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: "Segoe Script", cursive;
+            font-size: 30px;
+            color: #9d151d;
+            margin-bottom: 35px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 25px;
+        }
+
+        /* Kartu produk */
+        .product-card {
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            border: 1px solid #f0e2dc;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 5px 18px rgba(125, 90, 68, 0.10);
+            transition: transform 0.3s ease,
+                        box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 14px 28px rgba(125, 90, 68, 0.18);
+        }
+
+        /* Gambar produk */
+        .image-link {
+            display: block;
+            overflow: hidden;
+        }
+
+        .product-image {
+            display: block;
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.06);
+        }
+
+        /* Informasi produk */
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            padding: 20px;
+        }
+
+        .product-label {
+            align-self: flex-start;
+            background-color: #fff0ec;
+            color: #9d151d;
+            padding: 6px 10px;
+            border-radius: 20px;
+            font-family: Arial, sans-serif;
+            font-size: 10px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 13px;
+        }
+
+        .product-info h2 {
+            font-family: "Segoe Script", cursive;
+            font-size: 21px;
+            line-height: 1.5;
+            color: #9d151d;
+            margin-bottom: 12px;
+        }
+
+        .description {
+            font-size: 13px;
+            line-height: 1.8;
+            color: #7d5a44;
+            margin-bottom: 22px;
+        }
+
+        /* Harga dan tombol beli */
+        .product-bottom {
+            margin-top: auto;
+        }
+
+        .price {
+            font-size: 23px;
+            font-weight: bold;
+            color: black;
+            margin-bottom: 15px;
+        }
+
+        .buy-button {
+            width: 100%;
+            padding: 12px 10px;
+            border: 2px solid #9d151d;
+            border-radius: 10px;
+            background-color: #9d151d;
+            color: white;
+            font-family: "Comic Sans MS", cursive;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .buy-button:hover {
+            background-color: white;
+            color: #9d151d;
+            transform: scale(1.02);
+        }
+
+        .buy-button:active {
+            transform: scale(0.98);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 28px 15px;
+            background-color: #fff1ed;
+            border-top: 1px solid #f1ddd5;
+            color: #7d5a44;
+            font-size: 12px;
+            line-height: 2;
+        }
+
+        /* Tampilan tablet */
+        @media (max-width: 1000px) {
+            .product-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 22px;
+            }
+        }
+
+        /* Tampilan HP */
+        @media (max-width: 550px) {
+            .header {
+                padding: 35px 15px;
+            }
+
+            .subtitle {
+                font-size: 10px;
+                letter-spacing: 2px;
+            }
+
+            .tagline {
+                font-size: 13px;
+            }
+
+            .container {
+                padding: 30px 15px;
+            }
+
+            .section-title {
+                font-size: 25px;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+                gap: 22px;
+            }
+
+            .product-image {
+                height: 240px;
+            }
+        }
+
+        /* Mengurangi animasi jika diperlukan */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <p class="subtitle">HOMEMADE CHOCOLATE & SWEETS</p>
+        <h1>Toko Jualan Galih</h1>
+        <p class="tagline">
+            Manisnya kebahagiaan dalam setiap gigitan ♡
+        </p>
+    </header>
+
+    <!-- Produk -->
+    <main class="container">
+
+        <h2 class="section-title">Our Sweet Products ♡</h2>
+
+        <div class="product-grid">
+
+            <!-- Produk 1 -->
+            <article class="product-card">
+                <a class="image-link"
+                   href="https://pin.it/5op7G1Xne"
+                   title="Klik Untuk Hak Cipta"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    <img class="product-image"
+                         src="image/straw.jpg"
+                         alt="Dubai Strawberry Chocolate">
+                </a>
+
+                <div class="product-info">
+                    <span class="product-label">SPECIAL MENU</span>
+
+                    <h2>Dubai Strawberry Chocolate</h2>
+
+                    <p class="description">
+                        Strawberry yang dilumuri lelehan coklat
+                        dan potongan-potongan marshmellow yang
+                        dibaluri dark coklat berisi kunafa
+                        dibaluri pistachio.
+                    </p>
+
+                    <div class="product-bottom">
+                        <p class="price">Rp50.000</p>
+
+                        <button class="buy-button"
+                                onclick="beliProduk('Dubai Strawberry Chocolate')">
+                            Beli Sekarang ↗
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Produk 2 -->
+            <article class="product-card">
+                <a class="image-link"
+                   href="https://pin.it/4ZEUSlL2q"
+                   title="Klik Untuk Hak Cipta"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    <img class="product-image"
+                         src="image/choc.jpg"
+                         alt="Strawberry Chocolate">
+                </a>
+
+                <div class="product-info">
+                    <span class="product-label">BEST SELLER</span>
+
+                    <h2>Strawberry Chocolate</h2>
+
+                    <p class="description">
+                        Strawberry yang dilumuri perpaduan
+                        lelehan dark chocolate dan chocolate
+                        yang manis.
+                    </p>
+
+                    <div class="product-bottom">
+                        <p class="price">Rp35.000</p>
+
+                        <button class="buy-button"
+                                onclick="beliProduk('Strawberry Chocolate')">
+                            Beli Sekarang ↗
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Produk 3 -->
+            <article class="product-card">
+                <a class="image-link"
+                   href="https://pin.it/1vYdsTxCX"
+                   title="Klik Untuk Hak Cipta"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    <img class="product-image"
+                         src="image/dubai.jpg"
+                         alt="Dubai Chewwy Cookie">
+                </a>
+
+                <div class="product-info">
+                    <span class="product-label">SIGNATURE</span>
+
+                    <h2>Dubai Chewwy Cookie</h2>
+
+                    <p class="description">
+                        Marshmellow yang dilelehkan lalu dibaluri
+                        dengan dark coklat dan berisi kunafa
+                        yang dibaluri pistachio.
+                    </p>
+
+                    <div class="product-bottom">
+                        <p class="price">Rp30.000</p>
+
+                        <button class="buy-button"
+                                onclick="beliProduk('Dubai Chewwy Cookie')">
+                            Beli Sekarang ↗
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Produk 4 -->
+            <article class="product-card">
+                <a class="image-link"
+                   href="https://pin.it/1vZIpGrIa"
+                   title="Klik Untuk Hak Cipta"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    <img class="product-image"
+                         src="image/falala.jpg"
+                         alt="Falala">
+                </a>
+
+                <div class="product-info">
+                    <span class="product-label">PREMIUM</span>
+
+                    <h2>Falala</h2>
+
+                    <p class="description">
+                        Coklat chewwy yang ditaburi bubuk
+                        dark chocolate dan bubuk matcha.
+                    </p>
+
+                    <div class="product-bottom">
+                        <p class="price">Rp95.000</p>
+
+                        <button class="buy-button"
+                                onclick="beliProduk('Falala')">
+                            Beli Sekarang ↗
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>♡ Made with love by Toko Jualan Galih ♡</p>
+        <p>Terima kasih sudah berkunjung ke toko kami!</p>
+    </footer>
+
+    <!-- JavaScript tombol beli -->
+    <script>
+        function beliProduk(namaProduk) {
+            alert(namaProduk + " berhasil ditambahkan ke pilihanmu!");
+        }
+    </script>
+
+</body>
+</html>

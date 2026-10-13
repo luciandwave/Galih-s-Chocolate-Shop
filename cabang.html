@@ -1,0 +1,418 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cabang | Galih's Chocolate Shop</title>
+
+    <style>
+        /* Pengaturan dasar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Comic Sans MS", cursive;
+            background-color: #fffaf6;
+            color: #4e4034;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 45px 20px;
+            background: linear-gradient(135deg, #f4e7d9, #fffaf6);
+            border-bottom: 1px solid #e7d5c3;
+        }
+
+        .subtitle {
+            font-family: Arial, sans-serif;
+            font-size: 11px;
+            letter-spacing: 4px;
+            color: #8b6b50;
+            margin-bottom: 12px;
+        }
+
+        .header h1 {
+            font-family: "Segoe Script", cursive;
+            font-size: clamp(30px, 5vw, 45px);
+            color: #4e4034;
+            margin-bottom: 12px;
+        }
+
+        .header p {
+            color: #7d5a44;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        /* Konten utama */
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 40px 22px 55px;
+        }
+
+        .section-intro {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-intro h2 {
+            font-family: "Segoe Script", cursive;
+            font-size: 27px;
+            color: #4e4034;
+            margin-bottom: 10px;
+        }
+
+        .section-intro p {
+            color: #8b735f;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        /* Bagian kota */
+        .city-section {
+            margin-bottom: 35px;
+            padding: 28px;
+            background-color: #ffffff;
+            border: 1px solid #e9ded4;
+            border-radius: 20px;
+            box-shadow: 0 7px 22px rgba(78, 64, 52, 0.08);
+        }
+
+        .city-heading {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee2d7;
+        }
+
+        .city-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            width: 55px;
+            height: 55px;
+            background-color: #f4e7d9;
+            border-radius: 15px;
+            font-size: 27px;
+        }
+
+        .city-heading h2 {
+            font-family: "Segoe Script", cursive;
+            font-size: 27px;
+            color: #4e4034;
+            margin-bottom: 5px;
+        }
+
+        .city-heading p {
+            font-size: 12px;
+            color: #8b735f;
+        }
+
+        /* Daftar lokasi */
+        .branch-list {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .branch-card {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 20px 17px;
+            background-color: #fffaf6;
+            border: 1px solid #eee0d2;
+            border-radius: 14px;
+            transition: transform 0.3s ease,
+                        box-shadow 0.3s ease,
+                        background-color 0.3s ease;
+        }
+
+        .branch-card:hover {
+            transform: translateY(-5px);
+            background-color: #fdf4eb;
+            box-shadow: 0 8px 18px rgba(78, 64, 52, 0.10);
+        }
+
+        .branch-number {
+            display: inline-block;
+            margin-bottom: 12px;
+            padding: 5px 10px;
+            background-color: #f0e2d2;
+            border-radius: 20px;
+            color: #7d5a44;
+            font-family: Arial, sans-serif;
+            font-size: 10px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .branch-card h3 {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #4e4034;
+            margin-bottom: 15px;
+        }
+
+        .map-link {
+            display: inline-block;
+            margin-top: auto;
+            padding: 10px 12px;
+            border: 1px solid #4e4034;
+            border-radius: 9px;
+            background-color: #4e4034;
+            color: #ffffff;
+            text-align: center;
+            text-decoration: none;
+            font-size: 12px;
+            transition: background-color 0.25s ease,
+                        color 0.25s ease;
+        }
+
+        .map-link:hover {
+            background-color: #fffaf6;
+            color: #4e4034;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 25px 15px;
+            text-align: center;
+            background-color: #f4e7d9;
+            border-top: 1px solid #e7d5c3;
+            color: #7d5a44;
+            font-size: 12px;
+            line-height: 2;
+        }
+
+        /* Tablet */
+        @media (max-width: 800px) {
+            .branch-list {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .city-section {
+                padding: 22px;
+            }
+        }
+
+        /* HP */
+        @media (max-width: 520px) {
+            .header {
+                padding: 35px 15px;
+            }
+
+            .subtitle {
+                font-size: 10px;
+                letter-spacing: 2px;
+            }
+
+            .container {
+                padding: 28px 14px 40px;
+            }
+
+            .section-intro h2 {
+                font-size: 23px;
+            }
+
+            .city-section {
+                padding: 18px 14px;
+                border-radius: 16px;
+            }
+
+            .city-heading {
+                gap: 11px;
+            }
+
+            .city-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 23px;
+            }
+
+            .city-heading h2 {
+                font-size: 22px;
+            }
+
+            .branch-list {
+                grid-template-columns: 1fr;
+                gap: 13px;
+            }
+
+            .branch-card {
+                padding: 18px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <p class="subtitle">FIND YOUR SWEET SPOT</p>
+
+        <h1>Our Branches ♡</h1>
+
+        <p>
+            Temukan cabang favoritmu dan kunjungi lokasi kami!
+        </p>
+    </header>
+
+    <main class="container">
+
+        <div class="section-intro">
+            <h2>Visit Our Stores</h2>
+
+            <p>
+                Kami hadir di beberapa lokasi untuk menemani
+                momen manis kamu bersama cokelat favorit.
+            </p>
+        </div>
+
+        <!-- Cabang Bali -->
+        <section class="city-section">
+
+            <div class="city-heading">
+                <div class="city-icon">🌴</div>
+
+                <div>
+                    <h2>Cabang di Bali</h2>
+                    <p>Temukan Falala Coklat di Bali</p>
+                </div>
+            </div>
+
+            <div class="branch-list">
+
+                <!-- Bali 1 -->
+                <article class="branch-card">
+                    <span class="branch-number">CABANG 01</span>
+
+                    <h3>📍 Falala Coklat Bali - Kuta</h3>
+
+                    <a class="map-link"
+                       href="https://maps.app.goo.gl/uG1GyyKQwK2XAuap6"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Lihat Google Maps ↗
+                    </a>
+                </article>
+
+                <!-- Bali 2 -->
+                <article class="branch-card">
+                    <span class="branch-number">CABANG 02</span>
+
+                    <h3>📍 Falala Coklat Bali - Denpasar</h3>
+
+                    <a class="map-link"
+                       href="https://maps.app.goo.gl/WrsbnuiRZLUyHnQ87"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Lihat Google Maps ↗
+                    </a>
+                </article>
+
+                <!-- Bali 3 -->
+                <article class="branch-card">
+                    <span class="branch-number">CABANG 03</span>
+
+                    <h3>📍 Falala Coklat Bali - Ubud</h3>
+
+                    <a class="map-link"
+                       href="https://maps.app.goo.gl/XQPatZxzMfopbtZs8"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Lihat Google Maps ↗
+                    </a>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Cabang Bandung -->
+        <section class="city-section">
+
+            <div class="city-heading">
+                <div class="city-icon">☕</div>
+
+                <div>
+                    <h2>Cabang di Bandung</h2>
+                    <p>Temukan Tiramisusu di Bandung</p>
+                </div>
+            </div>
+
+            <div class="branch-list">
+
+                <!-- Bandung 1 -->
+                <article class="branch-card">
+                    <span class="branch-number">CABANG 04</span>
+
+                    <h3>📍 Tiramisusu - Buah Batu</h3>
+
+                    <a class="map-link"
+                       href="https://maps.app.goo.gl/35EmjSanVdtgCQKR7"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Lihat Google Maps ↗
+                    </a>
+                </article>
+
+                <!-- Bandung 2 -->
+                <article class="branch-card">
+                    <span class="branch-number">CABANG 05</span>
+
+                    <h3>📍 Tiramisusu - Braga</h3>
+
+                    <a class="map-link"
+                       href="https://maps.app.goo.gl/CmzLz3PfpLSEzAH4A"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Lihat Google Maps ↗
+                    </a>
+                </article>
+
+                <!-- Bandung 3 -->
+                <article class="branch-card">
+                    <span class="branch-number">CABANG 06</span>
+
+                    <h3>📍 Tiramisusu - Paskal</h3>
+
+                    <a class="map-link"
+                       href="https://maps.app.goo.gl/EutdGB9QgrLjX6qY7"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Lihat Google Maps ↗
+                    </a>
+                </article>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>♡ Galih's Chocolate Shop ♡</p>
+        <p>Sweet moments are waiting for you!</p>
+    </footer>
+
+</body>
+</html>

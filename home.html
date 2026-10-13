@@ -1,0 +1,410 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Home | Galih's Chocolate Shop</title>
+
+    <style>
+        :root {
+            --cokelat: #4e4034;
+            --merah: #410709;
+            --cokelat-muda: #5e3e2b;
+            --krem: #f5ede4;
+            --putih: #fffaf5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Comic Sans MS", cursive;
+            color: var(--merah);
+            background: linear-gradient(
+                135deg,
+                #fffaf5,
+                #f5ede4,
+                #ead9c8
+            );
+            min-height: 100vh;
+        }
+
+        /* NAVIGASI */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: var(--putih);
+            border-bottom: 1px solid #5e3e2b30;
+            gap: 20px;
+        }
+
+        .logo {
+            font-family: "Segoe Script", cursive;
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--cokelat);
+        }
+
+        nav a {
+            color: var(--merah);
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--cokelat-muda);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        /* BAGIAN UTAMA */
+        .hero {
+            min-height: 78vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 70px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before,
+        .hero::after {
+            content: "✦";
+            position: absolute;
+            color: #5e3e2b30;
+            font-size: 100px;
+            pointer-events: none;
+        }
+
+        .hero::before {
+            top: 50px;
+            left: 8%;
+        }
+
+        .hero::after {
+            bottom: 40px;
+            right: 8%;
+        }
+
+        .hero-content {
+            max-width: 850px;
+            animation: muncul 1s ease;
+        }
+
+        .welcome {
+            display: inline-block;
+            padding: 8px 20px;
+            border: 1px solid #5e3e2b60;
+            border-radius: 30px;
+            color: var(--cokelat-muda);
+            letter-spacing: 3px;
+            font-size: 12px;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-family: "Segoe Script", cursive;
+            color: var(--cokelat);
+            font-size: clamp(36px, 7vw, 68px);
+            line-height: 1.35;
+            margin-bottom: 20px;
+        }
+
+        .description {
+            max-width: 650px;
+            margin: 0 auto 30px;
+            font-size: 17px;
+            line-height: 1.9;
+            color: var(--merah);
+        }
+
+        .tagline {
+            color: var(--cokelat-muda);
+            font-style: italic;
+            margin-bottom: 32px;
+            font-size: 18px;
+        }
+
+        /* TOMBOL */
+        .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-family: "Comic Sans MS", cursive;
+            font-size: 15px;
+            transition: 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--merah);
+            color: var(--putih);
+            box-shadow: 0 5px 15px #41070925;
+        }
+
+        .btn-primary:hover {
+            background: var(--cokelat);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px #41070930;
+        }
+
+        .btn-secondary {
+            border: 2px solid var(--cokelat);
+            color: var(--cokelat);
+            background: transparent;
+        }
+
+        .btn-secondary:hover {
+            background: var(--cokelat);
+            color: var(--putih);
+            transform: translateY(-4px);
+        }
+
+        /* KARTU KEUNGGULAN */
+        .features {
+            width: min(950px, 90%);
+            margin: 0 auto 65px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: rgba(255, 250, 245, 0.9);
+            border: 1px solid #5e3e2b25;
+            border-radius: 18px;
+            text-align: center;
+            padding: 28px 18px;
+            box-shadow: 0 8px 25px #4e403415;
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 14px 30px #4e403425;
+        }
+
+        .feature-icon {
+            font-size: 32px;
+            color: var(--cokelat-muda);
+            margin-bottom: 12px;
+        }
+
+        .feature-card h2 {
+            font-size: 18px;
+            color: var(--cokelat);
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        /* AJAKAN */
+        .closing {
+            text-align: center;
+            padding: 45px 20px;
+            background: #ead9c8;
+        }
+
+        .closing h2 {
+            font-family: "Segoe Script", cursive;
+            font-size: clamp(25px, 4vw, 36px);
+            color: var(--cokelat);
+            margin-bottom: 12px;
+        }
+
+        .closing p {
+            margin-bottom: 25px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--cokelat);
+            color: var(--putih);
+            text-align: center;
+            padding: 25px 15px;
+            font-size: 13px;
+        }
+
+        footer p {
+            margin: 5px;
+        }
+
+        /* ANIMASI */
+        @keyframes muncul {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 650px) {
+            nav {
+                flex-direction: column;
+                padding: 18px;
+            }
+
+            .nav-links {
+                justify-content: center;
+                gap: 18px;
+                flex-wrap: wrap;
+            }
+
+            .logo {
+                font-size: 20px;
+                text-align: center;
+            }
+
+            .hero {
+                min-height: 70vh;
+                padding: 55px 20px;
+            }
+
+            .description {
+                font-size: 15px;
+            }
+
+            .tagline {
+                font-size: 16px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .hero::before {
+                left: 2%;
+                font-size: 60px;
+            }
+
+            .hero::after {
+                right: 2%;
+                font-size: 60px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+      <!-- HALAMAN HOME -->
+    <section class="hero">
+        <div class="hero-content">
+
+            <p class="welcome">WELCOME TO OUR CHOCOLATE SHOP</p>
+
+            <h1>Selamat Datang di<br>
+                Galih's Chocolate Shop
+            </h1>
+
+            <p class="description">
+                Selamat datang di website Galih's Chocolate Shop!
+                Temukan kelezatan cokelat yang istimewa, perpaduan
+                rasa unik, dan camilan manis yang siap menemani
+                setiap momen spesialmu.
+            </p>
+
+            <p class="tagline">
+                "Kelezatan Autentik di Setiap Gigitan"
+            </p>
+
+            <div class="buttons">
+                <a href="produk.html" class="btn btn-primary">
+                    🍫 Lihat Produk →
+                </a>
+
+                <a href="profil.html" class="btn btn-secondary">
+                    Tentang Toko Kami
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- KEUNGGULAN -->
+    <section class="features">
+
+        <article class="feature-card">
+            <div class="feature-icon">✦</div>
+            <h2>Rasa Istimewa</h2>
+            <p>
+                Pilihan camilan cokelat dengan perpaduan rasa
+                yang menggugah selera.
+            </p>
+        </article>
+
+        <article class="feature-card">
+            <div class="feature-icon">♡</div>
+            <h2>Dibuat dengan Cinta</h2>
+            <p>
+                Menghadirkan pengalaman menikmati cokelat
+                yang manis dan berkesan.
+            </p>
+        </article>
+
+        <article class="feature-card">
+            <div class="feature-icon">❀</div>
+            <h2>Varian Unik</h2>
+            <p>
+                Jelajahi aneka kreasi cokelat yang cocok
+                untuk menemani waktu santaimu.
+            </p>
+        </article>
+
+    </section>
+
+    <!-- AJAKAN BELANJA -->
+    <section class="closing">
+        <h2>Maniskan Harimu Bersama Kami!</h2>
+
+        <p>
+            Yuk, lihat menu cokelat kami dan temukan favoritmu.
+        </p>
+
+        <a href="produk.html" class="btn btn-primary">
+            Lihat Semua Produk →
+        </a>
+    </section>
+</body>
+</html>

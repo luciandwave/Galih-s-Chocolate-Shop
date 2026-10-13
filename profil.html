@@ -1,0 +1,435 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Galih's Chocolate Shop</title>
+
+    <style>
+        /* WARNA ASLI */
+        :root {
+            --cokelat: #4e4034;
+            --merah: #410709;
+            --cokelat-muda: #5e3e2b;
+            --krem: #f5ede4;
+            --putih: #fffaf5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Comic Sans MS", cursive;
+            color: var(--merah);
+            background: linear-gradient(
+                135deg,
+                #fffaf5,
+                #f5ede4,
+                #ead9c8
+            );
+            line-height: 1.8;
+        }
+
+        /* HEADER */
+        header {
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(
+                135deg,
+                #ead9c8,
+                #f5ede4,
+                #e4cbb4
+            );
+            border-bottom: 4px solid var(--cokelat);
+        }
+
+        .hero {
+            animation: muncul 1s ease;
+        }
+
+        .subtitle {
+            letter-spacing: 6px;
+            color: var(--cokelat-muda);
+            font-size: 14px;
+        }
+
+        header h1 {
+            font-family: "Segoe Script", cursive;
+            font-size: clamp(30px, 6vw, 55px);
+            color: var(--cokelat);
+            line-height: 1.5;
+            margin: 12px 0;
+        }
+
+        .tagline {
+            font-size: 17px;
+            font-style: italic;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            color: var(--putih);
+            background: var(--merah);
+            padding: 12px 28px;
+            border-radius: 30px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--cokelat);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px #41070935;
+        }
+
+        /* KONTEN */
+        .container {
+            width: min(1000px, 90%);
+            margin: 55px auto;
+        }
+
+        .card {
+            background: rgba(255, 250, 245, 0.95);
+            padding: 35px;
+            margin-bottom: 30px;
+            border-radius: 18px;
+            border: 1px solid #5e3e2b25;
+            border-left: 6px solid var(--cokelat);
+            box-shadow: 0 8px 25px #4e403415;
+            transition: 0.3s;
+            animation: muncul 0.8s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 35px #4e403425;
+        }
+
+        .number {
+            color: var(--cokelat-muda);
+            font-size: 13px;
+            letter-spacing: 3px;
+            font-weight: bold;
+        }
+
+        .card h2 {
+            font-family: "Segoe Script", cursive;
+            font-size: clamp(24px, 4vw, 34px);
+            color: var(--cokelat);
+            margin: 8px 0 22px;
+            line-height: 1.5;
+        }
+
+        .card h3 {
+            color: var(--cokelat-muda);
+            margin-bottom: 8px;
+        }
+
+        .description {
+            text-align: justify;
+            font-size: 16px;
+        }
+
+        /* INFORMASI TOKO */
+        .info-box {
+            background: var(--krem);
+            padding: 18px 22px;
+            border-radius: 12px;
+            margin-top: 15px;
+            border: 1px solid #5e3e2b20;
+            transition: 0.3s;
+        }
+
+        .info-box:hover {
+            background: #ead9c8;
+            transform: translateX(5px);
+        }
+
+        .info-box strong {
+            color: var(--cokelat);
+        }
+
+        /* VISI DAN MISI */
+        .vision-box,
+        .mission-box {
+            background: var(--krem);
+            padding: 22px;
+            border-radius: 12px;
+            margin-top: 15px;
+        }
+
+        .vision-box {
+            border-left: 4px solid var(--cokelat);
+        }
+
+        .mission-box {
+            border-left: 4px solid var(--merah);
+        }
+
+        .mission-box ul {
+            list-style: none;
+        }
+
+        .mission-box li {
+            position: relative;
+            padding: 8px 0 8px 30px;
+        }
+
+        .mission-box li::before {
+            content: "✎";
+            position: absolute;
+            left: 0;
+            color: var(--cokelat-muda);
+        }
+
+        /* NILAI UTAMA */
+        .values {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .value-item {
+            background: var(--krem);
+            padding: 22px;
+            border-radius: 14px;
+            border: 1px solid #5e3e2b20;
+            transition: 0.3s;
+        }
+
+        .value-item:hover {
+            transform: translateY(-6px);
+            background: #ead9c8;
+            box-shadow: 0 8px 20px #4e403415;
+        }
+
+        .value-icon {
+            font-size: 30px;
+            color: var(--cokelat-muda);
+            margin-bottom: 8px;
+        }
+
+        .value-item h3 {
+            font-size: 17px;
+        }
+
+        .value-item p {
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--cokelat);
+            color: var(--putih);
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        footer .footer-title {
+            font-family: "Segoe Script", cursive;
+            font-size: 22px;
+        }
+
+        footer small {
+            display: block;
+            margin-top: 12px;
+            opacity: 0.85;
+        }
+
+        /* ANIMASI */
+        @keyframes muncul {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* TAMPILAN HP */
+        @media (max-width: 768px) {
+            header {
+                min-height: 330px;
+                padding: 40px 18px;
+            }
+
+            header h1 {
+                font-size: 34px;
+            }
+
+            .tagline {
+                font-size: 15px;
+            }
+
+            .container {
+                width: 92%;
+                margin: 30px auto;
+            }
+
+            .card {
+                padding: 24px 20px;
+                margin-bottom: 22px;
+            }
+
+            .values {
+                grid-template-columns: 1fr;
+            }
+
+            .description {
+                text-align: left;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="hero">
+            <p class="subtitle">WELCOME TO</p>
+
+            <h1>Galih's Chocolate Shop</h1>
+
+            <p class="tagline">
+                "Kelezatan Autentik di Setiap Gigitan"
+            </p>
+
+            <a href="#tentang" class="btn">
+                Kenali Toko Kami ↓
+            </a>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- INFORMASI TOKO -->
+        <section class="card">
+            <span class="number">01</span>
+            <h2>Informasi Toko</h2>
+
+            <div class="info-box">
+                <p><strong>Nama Toko :</strong></p>
+                <p>Galih's Chocolate Shop</p>
+            </div>
+
+            <div class="info-box">
+                <p><strong>Slogan :</strong></p>
+                <p>"Kelezatan Autentik di Setiap Gigitan"</p>
+            </div>
+        </section>
+
+        <!-- TENTANG TOKO -->
+        <section class="card" id="tentang">
+            <span class="number">02</span>
+            <h2>About Our Chocolate Shop</h2>
+
+            <p class="description">
+                Kami adalah produsen cokelat artisan yang menghadirkan
+                kreasi cokelat berkualitas tinggi dari biji kakao pilihan.
+                Menggabungkan teknik pembuatan cokelat klasik dengan
+                inovasi rasa modern, kami berkomitmen menyajikan
+                kelezatan yang elegan untuk setiap momen spesial Anda.
+            </p>
+        </section>
+
+        <!-- VISI DAN MISI -->
+        <section class="card">
+            <span class="number">03</span>
+            <h2>Visi &amp; Misi</h2>
+
+            <div class="vision-box">
+                <h3>Visi</h3>
+                <p>
+                    Menjadi merek cokelat lokal terdepan yang dikenal
+                    akan kualitas premium, inovasi rasa, dan
+                    keberlanjutan bahan baku.
+                </p>
+            </div>
+
+            <div class="mission-box">
+                <h3>Misi</h3>
+
+                <ul>
+                    <li>
+                        Menggunakan 100% bahan alami tanpa
+                        pengawet buatan.
+                    </li>
+                    <li>
+                        Mendorong kesejahteraan petani kakao lokal
+                        melalui kemitraan adil (fair trade).
+                    </li>
+                    <li>
+                        Menyajikan pengalaman menikmati cokelat
+                        yang berkesan untuk seluruh pelanggan.
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- NILAI UTAMA -->
+        <section class="card">
+            <span class="number">04</span>
+            <h2>Nilai Utama Kami</h2>
+
+            <div class="values">
+
+                <article class="value-item">
+                    <div class="value-icon">✦</div>
+                    <h3>Kualitas Premium</h3>
+                    <p>
+                        Diproses secara higienis menggunakan
+                        mentega kakao murni (pure cocoa butter).
+                    </p>
+                </article>
+
+                <article class="value-item">
+                    <div class="value-icon">♡</div>
+                    <h3>Varian Rasa Unik</h3>
+                    <p>
+                        Pilihan dark chocolate (50%–85%),
+                        milk chocolate, white chocolate, hingga
+                        paduan rempah Nusantara.
+                    </p>
+                </article>
+
+                <article class="value-item">
+                    <div class="value-icon">❀</div>
+                    <h3>Ramah Lingkungan</h3>
+                    <p>
+                        Kemasan produk dapat didaur ulang
+                        untuk mendukung kelestarian alam.
+                    </p>
+                </article>
+
+            </div>
+        </section>
+
+    </main>
+</body>
+</html>
